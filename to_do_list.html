@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do list</title>
+</head>
+
+<body>
+    <input type="text" id="texto" name="texto">
+    <input type="submit" onclick="adicionarTarefa()" value="Adicionar" id="botao">
+    <div id="tarefas"> </div>
+
+    <script>
+        var tarefas = []
+        var id = 0
+
+        function teste(){
+            var texto_usuario = document.getElementById("texto")
+            if (texto_usuario.value == ""){
+                return false
+            }
+            else{
+                return true
+            }
+        }
+        function adicionarTarefa(){
+            if(teste() == false){
+                alert("Informe uma tarefa!")
+                texto.focus
+            }
+            else{
+                var auxiliar = document.getElementById("texto")
+                var tarefa = auxiliar.value
+                auxiliar.value = ""
+
+                var div = document.createElement("div", id=`${id}`)
+                div.innerHTML = `${tarefa}<button onclick="excluirTarefa(${id})">Excluir</button>`
+                var divTarefas = document.getElementById("tarefas")
+                divTarefas.appendChild(div)
+
+                id++
+
+                return tarefas.push(tarefa)
+            }
+        }
+        function excluirTarefa(id){
+            tarefas.splice(id,1)
+            var tarefa_remocao = document.getElementById(id)
+            tarefa_remocao.parentNode.removeChild(tarefa_remocao)
+        }
+    </script>
+</body>
+</html>
